@@ -1,4 +1,4 @@
-# fsv-front-end
+FABULOUS FOOTWARE E-Commerce app in Vue.js
 
 ## Project setup
 ```

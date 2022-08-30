@@ -115,7 +115,23 @@ app.get('/api/products/:productId', (req, res) => {
         res.status(404).json('Could not find the product!');
     }
 })
+app.post('/api/users/:userId/cart', (req, res ) => {
+  const { productId }= req.body;  
+  const product = products.find(product => product.id === productId);
+  res.status(200).json(cartItems);
+  if(products) {
+    cartItems.push(product);
+    res.status(200).json(cartItems);
+  } else {
+    res.status(404).json('Could Not Find Product!');
+  }
+});
 
+app.delete('/api/users/:userid/cart/:productId',(req, res) => {
+    const { productId }=req.params;
+    cartItems = cartItems.filter(product => product.id !== productId);
+    res.status(200).json(cartItems);
+});
 app.listen(8000, () => {
     console.log('Server is listening on port 8000');
 });
